@@ -6,11 +6,13 @@ We provide two versions of the Dockerfile:
 The application itself is a minimal Node.js app (server.js) using Express.
 
 # Project Structure
+```
 ├── Dockerfile        # Optimized Dockerfile
 ├── Dockerfile.old    # Unoptimized Dockerfile
 ├── package.json      # Node.js dependencies
 ├── server.js         # Minimal Express app
 └── .dockerignore     # Files excluded from build
+```
 
 # Build the Images
 # 1. Build the unoptimized image
