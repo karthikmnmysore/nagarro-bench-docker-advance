@@ -1,0 +1,13 @@
+# Big base image, no caching, no cleanup
+FROM node:18
+
+WORKDIR /app
+
+# Copy everything (even node_modules if present)
+COPY . .
+
+# Install dependencies
+RUN npm install
+
+# Run app
+CMD ["node", "server.js"]
