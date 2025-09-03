@@ -32,3 +32,42 @@ docker run -d --name mysql-db -e MYSQL_ROOT_PASSWORD=rootpw -v db_data:/var/lib/
 **Automation** → can be added to a cronjob or CI/CD for regular backups.
 
 **Portability** → backup file can be copied to another server and restored there.
+
+
+# What below command means
+```
+docker run --rm -v db_data:/volume -v $(pwd):/backup alpine tar czf /backup/db_data_backup.tar.gz -C /volume .
+```
+```
+docker run --rm
+```
+Runs a temporary container.
+
+**--rm** means Docker will automatically remove the container once it exits (no leftovers).
+```
+-v db_data:/volume
+```
+Mounts the Docker named volume db_data (where MySQL stores data) inside the container at /volume.
+So, inside this container, /volume = MySQL’s data directory.
+```
+-v $(pwd):/backup
+```
+Mounts your current host directory ($(pwd)) into the container at /backup.
+This is where the backup file will be written.
+After command runs, the backup tarball appears in your host directory.
+
+alpine
+The container uses the lightweight Alpine Linux image.
+It’s tiny but has the tar utility we need.
+```
+tar czf /backup/db_data_backup.tar.gz -C /volume .
+```
+Runs inside the container.
+
+# What actually happens
+Alpine container starts.
+It sees MySQL volume mounted at /volume.
+It sees host directory mounted at /backup.
+It creates a gzipped tarball of /volume and saves it as /backup/db_data_backup.tar.gz.
+Since /backup is mounted to your host, you now have the backup file in your current directory.
+Container exits and is auto-removed (--rm).
