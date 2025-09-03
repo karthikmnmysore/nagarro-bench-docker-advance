@@ -1,6 +1,5 @@
 # Dockerfile
 ```
-karthik@IN-PW0EYYJQ:/mnt/c/Users/karthikn/karthik-python-projects/bench-code/log-agregation$ cat Dockerfile
 FROM openjdk:17-jdk-slim
 
 RUN groupadd -r appgroup && useradd -r -g appgroup appuser
