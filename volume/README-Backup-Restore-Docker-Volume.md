@@ -28,5 +28,7 @@ docker run --rm -v db_data:/volume -v $(pwd):/backup alpine tar xzf /backup/db_d
 docker run -d --name mysql-db -e MYSQL_ROOT_PASSWORD=rootpw -v db_data:/var/lib/mysql mysql:8
 ```
 **Backup format** → we used .tar.gz, but you can use plain .tar.
+
 **Automation** → can be added to a cronjob or CI/CD for regular backups.
+
 **Portability** → backup file can be copied to another server and restored there.
