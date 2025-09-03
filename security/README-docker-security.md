@@ -9,7 +9,7 @@ public class Dummy {
 }
 EOF
 javac Dummy.java
-echo "Main-Class: Dummy" > manifest.txt
+(echo Manifest-Version: 1.0&echo Main-Class: Dummy&echo.) > manifest.txt
 jar cfm app.jar manifest.txt Dummy.class
 ```
 
