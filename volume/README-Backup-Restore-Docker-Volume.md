@@ -66,8 +66,13 @@ Runs inside the container.
 
 # What actually happens
 Alpine container starts.
+
 It sees MySQL volume mounted at /volume.
+
 It sees host directory mounted at /backup.
+
 It creates a gzipped tarball of /volume and saves it as /backup/db_data_backup.tar.gz.
+
 Since /backup is mounted to your host, you now have the backup file in your current directory.
+
 Container exits and is auto-removed (--rm).
