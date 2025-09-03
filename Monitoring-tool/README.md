@@ -73,10 +73,6 @@ services:
 volumes:
   db_data:
 ```
-# Build and run
-```
-docker-compose up -d --build
-```
 # promtail-config.yml
 ```
 server:
@@ -98,7 +94,10 @@ scrape_configs:
           job: docker
           __path__: /var/lib/docker/containers/*/*.log
 ```
-
+# Build and run
+```
+docker-compose up -d --build
+```
 # View logs in Grafana
 Open Grafana → http://localhost:3000
 
