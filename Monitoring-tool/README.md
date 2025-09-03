@@ -74,6 +74,10 @@ services:
 volumes:
   db_data:
 ```
+# Build and run
+```
+docker-compose up -d --build
+```
 # promtail-config.yml
 ```
 server:
@@ -98,10 +102,15 @@ scrape_configs:
 
 # View logs in Grafana
 Open Grafana → http://localhost:3000
+
 Default login: admin / admin
+
 Add Loki as data source:
+
 URL: http://loki:3100
+
 Go to Explore → Loki
+
 Run query:
 ```
 {job="docker"}
@@ -115,6 +124,9 @@ Hello Spring Boot
 
 # How it works
 **spring-app** writes logs to the container’s JSON log file (/var/lib/docker/containers/.../*.log).
+
 **Promtail** tails these logs and ships them to **Loki**.
+
 **Grafana** connects to **Loki** as a data source.
+
 We can visualize logs in Grafana (http://localhost:3000, login: admin/admin).
