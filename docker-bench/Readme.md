@@ -55,3 +55,28 @@ docker run -it --net host --pid host --userns host \
 Check in “4” section, it is “PASSED”
 Non Root user is added then Health check is added in Dockerfile, so Docker check is passed
 
+
+# Official image
+It means: Always pull images from official repos (nginx:alpine) or signed registries.
+```
+export DOCKER_CONTENT_TRUST=1
+docker pull nginx:alpine
+```
+# Trivy Scan to scan my image secure-nginx
+```
+docker run --rm -v /var/run/docker.sock:/var/run/docker.sock aquasec/trivy image secure-nginx
+```
+
+```
+Report Summary
+
+┌──────────────────────────────┬────────┬─────────────────┬─────────┐
+│            Target            │  Type  │ Vulnerabilities │ Secrets │
+├──────────────────────────────┼────────┼─────────────────┼─────────┤
+│ secure-nginx (alpine 3.22.1) │ alpine │        0        │    -    │
+└──────────────────────────────┴────────┴─────────────────┴─────────┘
+Legend:
+- '-': Not scanned
+- '0': Clean (no security findings detected)
+```
+
