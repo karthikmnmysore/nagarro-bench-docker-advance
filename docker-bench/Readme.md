@@ -1,5 +1,6 @@
-```
+# Docker Bench
 karthik@IN-PW0EYYJQ:/mnt/c/Users/karthikn/karthik-bench$ cat Dockerfile
+```
 FROM nginx:alpine
 
 # Remove "user ..." and replace "pid" path
